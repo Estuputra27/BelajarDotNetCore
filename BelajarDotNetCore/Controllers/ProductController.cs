@@ -20,7 +20,8 @@ namespace BelajarDotNetCore.Controllers
 
         public IActionResult Index()
         {
-            return View();
+
+            return View(_context.Product.ToList());
         }
 
         public ActionResult Create()

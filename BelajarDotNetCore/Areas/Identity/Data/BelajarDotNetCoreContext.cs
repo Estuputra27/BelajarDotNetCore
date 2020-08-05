@@ -14,6 +14,8 @@ namespace BelajarDotNetCore.Data
 {
     public class BelajarDotNetCoreContext : IdentityDbContext<IdentityUser>
     {
+        
+
         public BelajarDotNetCoreContext(DbContextOptions<BelajarDotNetCoreContext> options)
             : base(options)
         {
