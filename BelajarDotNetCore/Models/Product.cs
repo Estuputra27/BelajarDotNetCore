@@ -14,7 +14,7 @@ namespace BelajarDotNetCore.Models
         public Guid ProductId { get; set; }
         
         [Required]
-        public String ProductName { get; set; }
+        public string ProductName { get; set; }
 
     }
 }
