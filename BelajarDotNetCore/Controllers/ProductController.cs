@@ -5,11 +5,19 @@ using System.Threading.Tasks;
 using BelajarDotNetCore.Data;
 using BelajarDotNetCore.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BelajarDotNetCore.Controllers
 {
     public class ProductController : Controller
     {
+        private readonly BelajarDotNetCoreContext _context;
+
+        public ProductController(BelajarDotNetCoreContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -22,20 +30,22 @@ namespace BelajarDotNetCore.Controllers
 
        
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Product model)
         {
 
-            
-           
-            Product product = new Product();
-            product.ProductName = model.ProductName;
+            try {
+                model.ProductName = model.ProductName;
+                _context.Add(model);
+                _context.SaveChanges();
 
-           
-
+                return RedirectToAction("Index");
+            }catch(DbUpdateException)
+            {
+                ModelState.AddModelError("", "Failed to create products");
+                return RedirectToAction("Create");
+            }
           
-
-
-            return View(model);
             //return RedirectToAction("Index");
         }
     }
