@@ -1,0 +1,27 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model BelajarDotNetCore.Models.Product
+    <div class="container mt-5">
+
+        <div class="card pb-4">
+            <h1 class="text-center">Masukkan product mu!</h1>
+        @using (Html.BeginForm("Create", "Product", FormMethod.Post))
+        {
+            @Html.TextBoxFor(model => model.ProductName, new { @class = "form-control", @placeholder = "Masukkan nama product" })
+            <input type="submit" value="submit" class="btn btn-block btn-primary" />
+
+        }
+
+
+        @Html.DisplayFor(model => model.ProductName)
+        </div>
+
+
+
+
+
+    </div>

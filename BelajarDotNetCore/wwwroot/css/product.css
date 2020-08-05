@@ -1,0 +1,15 @@
+﻿body {
+}
+
+.navku{
+    margin-top:200px;
+    width:100%;
+}
+
+.navku a:hover{
+    transform:scale(1.2,1.2);
+}
+.navku a{
+   
+    transition:1s;
+}
